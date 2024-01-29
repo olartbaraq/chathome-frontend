@@ -1,5 +1,4 @@
 export type UserResponse = {
-  message: string;
   token: string;
   user: UserData;
 };

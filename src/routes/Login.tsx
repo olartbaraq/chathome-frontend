@@ -4,10 +4,11 @@ import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { UserData, UserResponse } from "../typings";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { UserContext } from "../context/ContextProvider";
 
 const loginFormSchema = z.object({
   email: z
@@ -32,6 +33,8 @@ type LoginUser = {
 
 const Login = () => {
   const navigate = useNavigate();
+
+  const { setUser } = useContext(UserContext);
 
   const [disabled, setDisabled] = useState<boolean>(false);
   // 1. Define your form.
@@ -60,16 +63,23 @@ const Login = () => {
       if (loginResponse.status === 200) {
         const data: UserResponse = loginResponse.data;
         //console.log("DATA>>>", data);
-        const user: UserData = data.user;
-
-        console.log(user);
-        navigate("/");
+        setUser({
+          token: data.token,
+          user: data.user,
+        });
+        //console.log(user);
+        toast.success("Login Successful", {
+          autoClose: 2000,
+          theme: "light",
+        });
+        navigate("/mainpage");
         form.reset();
       } else {
         toast.error("Uh Oh! Something went wrong !!!", {
           autoClose: 2000,
           theme: "light",
         });
+        setDisabled(false);
       }
     } catch (error: any) {
       const errorBody = error.response.data;
@@ -77,6 +87,7 @@ const Login = () => {
         autoClose: 2000,
         theme: "light",
       });
+      setDisabled(false);
     }
   }
 
@@ -86,23 +97,40 @@ const Login = () => {
         <div>
           <img src={homelogo} alt="chat-home_image" className="w-5 h-5" />
         </div>
-        <h2 className="text-xl text-blue-500 font-normal leading-relaxed">
-          Home
+        <h2>
+          <Link
+            className="text-xl text-blue-500 font-normal leading-relaxed"
+            to={"/"}
+          >
+            Home
+          </Link>
         </h2>
       </div>
 
-      <div className="flex flex-col space-y-5 border-slate-200 px-10 py-20 border rounded-md w-full self-center items-center">
+      <div className="flex flex-col space-y-7 border-slate-200 px-10 py-20 border rounded-md w-full self-center items-center">
         <div className="flex flex-col space-y-0 items-center">
           <p className="text-lg text-black">👋Welcome back</p>
           <h5 className="leading-loose text-base">Login to your account</h5>
         </div>
 
-        <button className="border-slate-200 w-full border rounded-lg flex space-x-3 items-center justify-center py-2">
-          <img src={google} alt="google-icon" className="w-5 h-5" />
-          <h4 className="text-blue-500 text-base leading-relaxed">
-            Continue with Google
-          </h4>
-        </button>
+        <div className="flex flex-col space-y-3 items-center border border-blue-500 rounded-xl p-6">
+          <h2>
+            Don't have an account?
+            <Link
+              className="text-base text-blue-500 font-normal leading-relaxed"
+              to={"/register"}
+            >
+              Sign Up
+            </Link>
+          </h2>
+          <p>or</p>
+          <button className="border-slate-200 w-full border rounded-lg flex space-x-3 items-center justify-center py-2">
+            <img src={google} alt="google-icon" className="w-5 h-5" />
+            <h4 className="text-blue-500 text-base leading-relaxed">
+              Continue with Google
+            </h4>
+          </button>
+        </div>
 
         {/* Design form here */}
         <form
@@ -152,7 +180,9 @@ const Login = () => {
           <button
             type="submit"
             disabled={disabled}
-            className="bg-blue-500 text-white py-2 rounded-md items-center justify-center"
+            className={`${
+              disabled ? "bg-gray-500" : "bg-blue-500"
+            } text-white py-2 rounded-md items-center justify-center`}
           >
             Login
           </button>

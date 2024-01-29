@@ -1,12 +1,10 @@
 import homelogo from "../assets/home.png";
-import google from "../assets/Vector.png";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useState } from "react";
-import { UserData, UserResponse } from "../typings";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const signFormSchema = z.object({
@@ -34,7 +32,7 @@ type signUpResponse = {
   email: string;
 };
 
-const Login = () => {
+const Signup = () => {
   const navigate = useNavigate();
 
   const [disabled, setDisabled] = useState<boolean>(false);
@@ -62,12 +60,16 @@ const Login = () => {
       setDisabled(true);
 
       if (registerResponse.status === 201) {
-        const data: UserResponse = registerResponse.data;
+        const data: signUpResponse = registerResponse.data;
         //console.log("DATA>>>", data);
-        const user: UserData = data.user;
+        const user = data.email;
 
-        console.log(user);
-        navigate("/");
+        //console.log(user);
+        toast.error(`${user} registered successfully!!!`, {
+          autoClose: 2000,
+          theme: "light",
+        });
+        navigate("/login");
         form.reset();
       } else {
         toast.error("Uh Oh! Something went wrong !!!", {
@@ -90,23 +92,21 @@ const Login = () => {
         <div>
           <img src={homelogo} alt="chat-home_image" className="w-5 h-5" />
         </div>
-        <h2 className="text-xl text-blue-500 font-normal leading-relaxed">
-          Home
+        <h2>
+          <Link
+            className="text-xl text-blue-500 font-normal leading-relaxed"
+            to={"/"}
+          >
+            Home
+          </Link>
         </h2>
       </div>
 
       <div className="flex flex-col space-y-5 border-slate-200 px-10 py-20 border rounded-md w-full self-center items-center">
         <div className="flex flex-col space-y-0 items-center">
-          <p className="text-lg text-black">👋Welcome back</p>
-          <h5 className="leading-loose text-base">Login to your account</h5>
+          <p className="text-2xl text-black">Sign Up</p>
+          <h5 className="leading-loose text-base">Create an account</h5>
         </div>
-
-        <button className="border-slate-200 w-full border rounded-lg flex space-x-3 items-center justify-center py-2">
-          <img src={google} alt="google-icon" className="w-5 h-5" />
-          <h4 className="text-blue-500 text-base leading-relaxed">
-            Continue with Google
-          </h4>
-        </button>
 
         {/* Design form here */}
         <form
@@ -147,8 +147,11 @@ const Login = () => {
 
           {/* Forgot Password */}
           <div>
-            <h3 className="text-yellow-500 text-lg leading-relaxed">
-              Forgot Password?
+            <h3 className="text-lg leading-relaxed">
+              Already have an account?{" "}
+              <Link className="text-yellow-500" to={"login"}>
+                Login
+              </Link>
             </h3>
           </div>
 
@@ -156,9 +159,11 @@ const Login = () => {
           <button
             type="submit"
             disabled={disabled}
-            className="bg-blue-500 text-white py-2 rounded-md items-center justify-center"
+            className={`${
+              disabled ? "bg-gray-500" : "bg-blue-500"
+            } text-white py-2 rounded-md items-center justify-center`}
           >
-            Login
+            Sign Up
           </button>
         </form>
       </div>
@@ -166,4 +171,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Signup;
