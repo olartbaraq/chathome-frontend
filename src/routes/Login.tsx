@@ -5,7 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useContext, useState } from "react";
-import { UserData, UserResponse } from "../typings";
+import { UserResponse } from "../typings";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { UserContext } from "../context/ContextProvider";
@@ -66,6 +66,7 @@ const Login = () => {
         setUser({
           token: data.token,
           user: data.user,
+          isLoggedIn: data.isLoggedIn,
         });
         //console.log(user);
         toast.success("Login Successful", {
@@ -99,7 +100,7 @@ const Login = () => {
         </div>
         <h2>
           <Link
-            className="text-xl text-blue-500 font-normal leading-relaxed"
+            className="text-xl text-blue-900 font-normal leading-relaxed"
             to={"/"}
           >
             Home
@@ -117,7 +118,7 @@ const Login = () => {
           <h2>
             Don't have an account?
             <Link
-              className="text-base text-blue-500 font-normal leading-relaxed"
+              className="text-base text-blue-900 font-normal leading-relaxed"
               to={"/register"}
             >
               Sign Up
@@ -126,7 +127,7 @@ const Login = () => {
           <p>or</p>
           <button className="border-slate-200 w-full border rounded-lg flex space-x-3 items-center justify-center py-2">
             <img src={google} alt="google-icon" className="w-5 h-5" />
-            <h4 className="text-blue-500 text-base leading-relaxed">
+            <h4 className="text-blue-900 text-base leading-relaxed">
               Continue with Google
             </h4>
           </button>
@@ -181,7 +182,7 @@ const Login = () => {
             type="submit"
             disabled={disabled}
             className={`${
-              disabled ? "bg-gray-500" : "bg-blue-500"
+              disabled ? "bg-gray-500" : "bg-blue-900"
             } text-white py-2 rounded-md items-center justify-center`}
           >
             Login

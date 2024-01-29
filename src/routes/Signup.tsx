@@ -94,7 +94,7 @@ const Signup = () => {
         </div>
         <h2>
           <Link
-            className="text-xl text-blue-500 font-normal leading-relaxed"
+            className="text-xl text-blue-900 font-normal leading-relaxed"
             to={"/"}
           >
             Home
@@ -160,7 +160,7 @@ const Signup = () => {
             type="submit"
             disabled={disabled}
             className={`${
-              disabled ? "bg-gray-500" : "bg-blue-500"
+              disabled ? "bg-gray-500" : "bg-blue-900"
             } text-white py-2 rounded-md items-center justify-center`}
           >
             Sign Up

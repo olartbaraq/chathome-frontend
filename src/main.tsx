@@ -8,6 +8,8 @@ import Homepage from "./routes/Homepage.tsx";
 import ErrorPage from "./error-page.tsx";
 import Login from "./routes/Login.tsx";
 import Signup from "./routes/Signup.tsx";
+import Mainlayout from "./routes/MainLayout.tsx";
+import NoChatpage from "./context/NoChatPage.tsx";
 import { ContextProvider } from "./context/ContextProvider.tsx";
 
 const router = createBrowserRouter([
@@ -25,6 +27,18 @@ const router = createBrowserRouter([
     path: "/register",
     element: <Signup />,
     errorElement: <ErrorPage />,
+  },
+  {
+    path: "/mainpage",
+    element: <Mainlayout />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "nochat",
+        element: <NoChatpage />,
+        errorElement: <ErrorPage />,
+      },
+    ],
   },
 ]);
 

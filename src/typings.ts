@@ -1,5 +1,6 @@
 export type UserResponse = {
   token: string;
+  isLoggedIn: boolean;
   user: UserData;
 };
 

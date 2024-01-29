@@ -37,6 +37,7 @@ export const ContextProvider = ({ children }: ContextProviderProps) => {
       email: "",
     },
     token: "",
+    isLoggedIn: false,
   });
 
   return (
