@@ -9,7 +9,7 @@ import { UserData, UserResponse } from "../typings";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-const loginFormSchema = z.object({
+const signFormSchema = z.object({
   email: z
     .string({
       required_error: "Email is required",
@@ -23,11 +23,15 @@ const loginFormSchema = z.object({
   }),
 });
 
-const requiredForm = loginFormSchema.required();
+const requiredForm = signFormSchema.required();
 
-type LoginUser = {
+type signupUser = {
   email: string;
   password: string;
+};
+
+type signUpResponse = {
+  email: string;
 };
 
 const Login = () => {
@@ -45,20 +49,20 @@ const Login = () => {
 
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof requiredForm>) {
-    const body: LoginUser = {
+    const body: signupUser = {
       email: values.email,
       password: values.password,
     };
 
     try {
-      const loginResponse = await axios.post(
-        "http://127.0.0.1:8000/login/",
+      const registerResponse = await axios.post(
+        "http://127.0.0.1:8000/register/",
         body
       );
       setDisabled(true);
 
-      if (loginResponse.status === 200) {
-        const data: UserResponse = loginResponse.data;
+      if (registerResponse.status === 201) {
+        const data: UserResponse = registerResponse.data;
         //console.log("DATA>>>", data);
         const user: UserData = data.user;
 
