@@ -1,7 +1,13 @@
 import { MessagesSquare } from "lucide-react";
 import { Plus } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const NoChatpage = () => {
+  const navigate = useNavigate();
+
+  const addUserhandler = () => {
+    navigate("/mainpage/adduser");
+  };
   return (
     <div className="w-full h-full flex items-center justify-center self-center">
       <div className="w-full flex flex-col items-center space-y-4">
@@ -18,6 +24,7 @@ const NoChatpage = () => {
         <button
           type="button"
           className="bg-blue-900 w-36 h-10 flex items-center justify-center rounded-md space-x-2"
+          onClick={addUserhandler}
         >
           <Plus color="#fff" size={15} />
           <p className="text-white">Add a person</p>

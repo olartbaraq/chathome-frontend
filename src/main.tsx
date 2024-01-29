@@ -9,7 +9,8 @@ import ErrorPage from "./error-page.tsx";
 import Login from "./routes/Login.tsx";
 import Signup from "./routes/Signup.tsx";
 import Mainlayout from "./routes/MainLayout.tsx";
-import NoChatpage from "./context/NoChatPage.tsx";
+import NoChatpage from "./routes/NoChatPage.tsx";
+import InviteUser from "./routes/InviteUser.tsx";
 import { ContextProvider } from "./context/ContextProvider.tsx";
 
 const router = createBrowserRouter([
@@ -36,6 +37,11 @@ const router = createBrowserRouter([
       {
         path: "nochat",
         element: <NoChatpage />,
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: "adduser",
+        element: <InviteUser />,
         errorElement: <ErrorPage />,
       },
     ],

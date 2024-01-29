@@ -116,7 +116,7 @@ const Login = () => {
 
         <div className="flex flex-col space-y-3 items-center border border-blue-500 rounded-xl p-6">
           <h2>
-            Don't have an account?
+            Don't have an account?{" "}
             <Link
               className="text-base text-blue-900 font-normal leading-relaxed"
               to={"/register"}
