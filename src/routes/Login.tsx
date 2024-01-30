@@ -58,7 +58,6 @@ const Login = () => {
         "http://127.0.0.1:8000/login/",
         body
       );
-      setDisabled(true);
 
       if (loginResponse.status === 200) {
         const data: UserResponse = loginResponse.data;
@@ -77,14 +76,13 @@ const Login = () => {
           autoClose: 2000,
           theme: "light",
         });
-        navigate("/mainpage");
+        navigate("/mainpage/nochat");
         form.reset();
       } else {
         toast.error("Uh Oh! Something went wrong !!!", {
           autoClose: 2000,
           theme: "light",
         });
-        setDisabled(false);
       }
     } catch (error: any) {
       const errorBody = error.response.data;
@@ -92,6 +90,7 @@ const Login = () => {
         autoClose: 2000,
         theme: "light",
       });
+    } finally {
       setDisabled(false);
     }
   }
