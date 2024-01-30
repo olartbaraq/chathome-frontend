@@ -14,19 +14,12 @@ const Mainlayout = () => {
   const { userData, setUser } = useContext(UserContext);
   const navigate = useNavigate();
 
-  // if (userData.isLoggedIn == false) {
-  //   return <Navigate to={"/login"} />;
-  // }
+  if (userData.isLoggedIn == false) {
+    return <Navigate to={"/login"} />;
+  }
 
   const logoutHandler = () => {
-    setUser({
-      user: {
-        id: "",
-        email: "",
-      },
-      token: "",
-      isLoggedIn: false,
-    });
+    localStorage.removeItem("userData");
     navigate("/login");
   };
 

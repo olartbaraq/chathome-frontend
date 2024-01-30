@@ -1,6 +1,15 @@
 import homelogo from "../assets/home.png";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
+import { UserContext } from "../context/ContextProvider";
+import { useContext } from "react";
+
 const Homepage = () => {
+  const { userData } = useContext(UserContext);
+
+  if (userData.isLoggedIn == true) {
+    return <Navigate to={"/mainpage"} />;
+  }
+
   return (
     <div className="border text-center border-gray-500 rounded-xl w-full p-32 overflow-x-hidden m-10">
       <img

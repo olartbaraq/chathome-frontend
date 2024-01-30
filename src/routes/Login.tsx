@@ -68,6 +68,10 @@ const Login = () => {
           user: data.user,
           isLoggedIn: data.isLoggedIn,
         });
+
+        // Save the updated userData to localStorage//
+        localStorage.setItem("userData", JSON.stringify(data));
+
         //console.log(user);
         toast.success("Login Successful", {
           autoClose: 2000,
