@@ -11,6 +11,7 @@ import Signup from "./routes/Signup.tsx";
 import Mainlayout from "./routes/MainLayout.tsx";
 import NoChatpage from "./routes/NoChatPage.tsx";
 import InviteUser from "./routes/InviteUser.tsx";
+import MessagesPage from "./routes/MessagesPage.tsx";
 import { ContextProvider } from "./context/ContextProvider.tsx";
 
 const router = createBrowserRouter([
@@ -42,6 +43,11 @@ const router = createBrowserRouter([
       {
         path: "adduser",
         element: <InviteUser />,
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: "messages",
+        element: <MessagesPage />,
         errorElement: <ErrorPage />,
       },
     ],

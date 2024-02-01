@@ -8,3 +8,8 @@ export type UserData = {
   email: string;
   id: string;
 };
+
+export type AddUser = {
+  email: string;
+  user: string;
+};

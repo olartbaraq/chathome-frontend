@@ -11,7 +11,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 
 const Mainlayout = () => {
-  const { userData, setUser } = useContext(UserContext);
+  const { userData } = useContext(UserContext);
   const navigate = useNavigate();
 
   if (userData.isLoggedIn == false) {
@@ -21,6 +21,10 @@ const Mainlayout = () => {
   const logoutHandler = () => {
     localStorage.removeItem("userData");
     navigate("/login");
+  };
+
+  const messagesHandler = () => {
+    navigate("/mainpage/messages");
   };
 
   return (
@@ -35,7 +39,7 @@ const Mainlayout = () => {
               <h2>
                 <Link
                   className="text-xl text-white font-normal leading-relaxed"
-                  to={"/"}
+                  to={"/mainpage/nochat"}
                 >
                   Home
                 </Link>
@@ -47,6 +51,7 @@ const Mainlayout = () => {
               <button
                 className="bg-blue-700 px-4 w-full h-10 items-center justify-center flex gap-2 rounded-md"
                 type="button"
+                onClick={messagesHandler}
               >
                 <MessagesSquare size={15} color="#fff" />
                 <h4 className="text-base font-normal text-white">Messages</h4>
@@ -69,7 +74,7 @@ const Mainlayout = () => {
 
         {/* Top layer */}
         <div className="w-5/6 flex flex-col">
-          <div className="w-full h-28 py-1 px-8 flex items-center self-start justify-between">
+          <div className="w-full h-28 px-8 flex items-center self-start justify-between">
             <div className="relative w-80 h-12 px-2 flex items-center border border-slate-300 rounded-lg justify-between">
               <input
                 className="relative w-32 flex space-x-2 border-none h-10 focus:outline-none px-4 text-xs"

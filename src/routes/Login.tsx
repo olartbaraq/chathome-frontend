@@ -96,7 +96,7 @@ const Login = () => {
   }
 
   return (
-    <div className="flex flex-col w-full items-center space-y-10 py-20 px-20">
+    <div className="flex flex-col w-full items-center space-y-10 py-20 px-64">
       <div className="w-full flex items-center space-x-1 justify-center">
         <div>
           <img src={homelogo} alt="chat-home_image" className="w-5 h-5" />
@@ -111,7 +111,7 @@ const Login = () => {
         </h2>
       </div>
 
-      <div className="flex flex-col space-y-7 border-slate-200 px-10 py-20 border rounded-md w-full self-center items-center">
+      <div className="flex flex-col space-y-7 border-slate-200 px-10 py-10 border rounded-md w-full self-center items-center">
         <div className="flex flex-col space-y-0 items-center">
           <p className="text-lg text-black">👋Welcome back</p>
           <h5 className="leading-loose text-base">Login to your account</h5>

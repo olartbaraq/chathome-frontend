@@ -65,7 +65,7 @@ const Signup = () => {
         const user = data.email;
 
         //console.log(user);
-        toast.error(`${user} registered successfully!!!`, {
+        toast.success(`${user} registered successfully!!!`, {
           autoClose: 2000,
           theme: "light",
         });
@@ -79,7 +79,7 @@ const Signup = () => {
       }
     } catch (error: any) {
       const errorBody = error.response.data;
-      toast.error(`${errorBody.errors}`, {
+      toast.error(`${errorBody.errors || errorBody.password}`, {
         autoClose: 2000,
         theme: "light",
       });
@@ -87,7 +87,7 @@ const Signup = () => {
   }
 
   return (
-    <div className="flex flex-col w-full items-center space-y-10 py-20 px-20">
+    <div className="flex flex-col w-full items-center space-y-10 py-20 px-64">
       <div className="w-full flex items-center space-x-1 justify-center">
         <div>
           <img src={homelogo} alt="chat-home_image" className="w-5 h-5" />
@@ -149,7 +149,7 @@ const Signup = () => {
           <div>
             <h3 className="text-lg leading-relaxed">
               Already have an account?{" "}
-              <Link className="text-yellow-500" to={"login"}>
+              <Link className="text-yellow-500" to={"/login"}>
                 Login
               </Link>
             </h3>
