@@ -13,3 +13,15 @@ export type AddUser = {
   email: string;
   user: string;
 };
+export type UserChat = {
+  email: string;
+  user_id: string;
+};
+
+export type Messages = {
+  id: string;
+  receiver_id: string;
+  user_id: string;
+  content: string;
+  timestamp: string;
+};
