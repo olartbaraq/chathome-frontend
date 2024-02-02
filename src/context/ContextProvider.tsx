@@ -23,7 +23,7 @@ const defaultState = {
     token: "",
     isLoggedIn: false,
   },
-  setUser: (user: UserResponse) => {},
+  setUser: () => {},
 } as StateContext;
 
 export const UserContext = createContext(defaultState);
