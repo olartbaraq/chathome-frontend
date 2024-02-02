@@ -43,7 +43,7 @@ const Chats = ({ user_id, email }: UserChat) => {
   useEffect(() => {
     // Create a WebSocket connection
     const ws = new WebSocket(
-      `ws://chat-home-6d7818406fa3.herokuapp.com/ws/chat/${user_id}/?token=${userData.token}`
+      `wss://chat-home-6d7818406fa3.herokuapp.com/ws/chat/${user_id}/?token=${userData.token}`
     );
 
     // Set up event listeners
