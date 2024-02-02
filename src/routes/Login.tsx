@@ -48,6 +48,7 @@ const Login = () => {
 
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof requiredForm>) {
+    setDisabled(true);
     const body: LoginUser = {
       email: values.email,
       password: values.password,
