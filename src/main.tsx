@@ -8,7 +8,7 @@ import Homepage from "./routes/Homepage.tsx";
 import ErrorPage from "./error-page.tsx";
 import Login from "./routes/Login.tsx";
 import Signup from "./routes/Signup.tsx";
-import Mainlayout from "./routes/MainLayout.tsx";
+import Mainlayout from "./routes/Mainlayout.tsx";
 import NoChatpage from "./routes/NoChatPage.tsx";
 import InviteUser from "./routes/InviteUser.tsx";
 import MessagesPage from "./routes/MessagesPage.tsx";

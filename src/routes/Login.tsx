@@ -55,7 +55,7 @@ const Login = () => {
 
     try {
       const loginResponse = await axios.post(
-        "http://127.0.0.1:8000/login/",
+        "http://chat-home-6d7818406fa3.herokuapp.com/login/",
         body
       );
 

@@ -22,7 +22,7 @@ const Chats = ({ user_id, email }: UserChat) => {
 
       try {
         const listMessages = await axios.get(
-          `http://127.0.0.1:8000/chat/users/${user_id}/messages/`,
+          `http://chat-home-6d7818406fa3.herokuapp.com/chat/users/${user_id}/messages/`,
           {
             headers: headers,
           }
@@ -43,7 +43,7 @@ const Chats = ({ user_id, email }: UserChat) => {
   useEffect(() => {
     // Create a WebSocket connection
     const ws = new WebSocket(
-      `ws://127.0.0.1:8000/ws/chat/${user_id}/?token=${userData.token}`
+      `ws://chat-home-6d7818406fa3.herokuapp.com/ws/chat/${user_id}/?token=${userData.token}`
     );
 
     // Set up event listeners
