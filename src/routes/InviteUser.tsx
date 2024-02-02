@@ -44,7 +44,7 @@ const InviteUser = () => {
     };
     try {
       const addUserResponse = await axios.get(
-        `http://chat-home-6d7818406fa3.herokuapp.com/chat/users/${values.email}`,
+        `https://chat-home-6d7818406fa3.herokuapp.com/chat/users/${values.email}`,
         { headers: headers }
       );
 
@@ -54,7 +54,7 @@ const InviteUser = () => {
         const body = { email: data.email };
 
         const saveEmailresponse = await axios.post(
-          "http://chat-home-6d7818406fa3.herokuapp.com/chat/users/store_email/",
+          "https://chat-home-6d7818406fa3.herokuapp.com/chat/users/store_email/",
           body,
           { headers: headers }
         );

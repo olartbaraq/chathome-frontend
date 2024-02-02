@@ -54,7 +54,7 @@ const Signup = () => {
 
     try {
       const registerResponse = await axios.post(
-        "http://chat-home-6d7818406fa3.herokuapp.com/register/",
+        "https://chat-home-6d7818406fa3.herokuapp.com/register/",
         body
       );
       setDisabled(true);

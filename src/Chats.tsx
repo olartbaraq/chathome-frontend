@@ -22,7 +22,7 @@ const Chats = ({ user_id, email }: UserChat) => {
 
       try {
         const listMessages = await axios.get(
-          `http://chat-home-6d7818406fa3.herokuapp.com/chat/users/${user_id}/messages/`,
+          `https://chat-home-6d7818406fa3.herokuapp.com/chat/users/${user_id}/messages/`,
           {
             headers: headers,
           }

@@ -31,7 +31,7 @@ const MessagesPage = () => {
     const getUsers = async () => {
       try {
         const listAddedUsersResponse = await axios.get(
-          "http://chat-home-6d7818406fa3.herokuapp.com/chat/users/list_emails/",
+          "https://chat-home-6d7818406fa3.herokuapp.com/chat/users/list_emails/",
           {
             headers: headers,
           }
