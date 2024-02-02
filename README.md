@@ -9,10 +9,13 @@ Currently, two official plugins are available:
 
 # git clone the project
 
-Git clone git@github.com:olartbaraq/chathome-frontend.git
-cd into the cloned directory
-run npm install
-run npm run dev
+- Git clone git@github.com:olartbaraq/chathome-frontend.git
+- cd into the cloned directory
+- run npm install
+- run npm run dev
+
+- Change [https://chat-home-6d7818406fa3.herokuapp.com] to [http://127.0.0.1:8000]
+- Change [wss://chat-home-6d7818406fa3.herokuapp.com] to [ws://127.0.0.1:8000]
 
 ## Expanding the ESLint configuration
 
